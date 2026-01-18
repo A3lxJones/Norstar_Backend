@@ -1,0 +1,21 @@
+{
+  "name": "norstar-backend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon --watch src -e ts --exec ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.0",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.5.1",
+    "nodemon": "^3.1.11",
+    "ts-node": "^1.7.1",
+    "typescript": "^5.5.0"
+  }
+}
