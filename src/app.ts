@@ -1,11 +1,22 @@
-import express from 'express';
-import routes from './routes';
+import express from 'express'
+import cors from 'cors'
+import apiRouter from './routes'
+import { logger } from './middleware/logger'
+import { errorHandler } from './middleware/errorHandler'
 
-const app = express();
+const app = express()
 
-app.use(express.json());
-// mount API routes (routes/index.ts defines /health)
-app.use('/api', routes);
+app.use(cors({
+  origin: 'http://localhost:3003',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}))
 
-export default app;
+app.use(express.json())
+app.use(logger)
 
+app.use('/api', apiRouter)
+
+app.use(errorHandler)
+
+export default app

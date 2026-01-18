@@ -1,8 +1,10 @@
-import { Router } from 'express';
-import { health } from '../controllers/healthController';
+import { Router } from 'express'
+import fixturesRouter from './fixtures'
+import healthRouter from './health'
 
-const router = Router();
+const router = Router()
 
-router.get('/health', health);
+router.use('/health', healthRouter)
+router.use('/fixtures', fixturesRouter)
 
-export default router;
+export default router
